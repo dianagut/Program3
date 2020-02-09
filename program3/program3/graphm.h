@@ -20,7 +20,7 @@ class GraphM
     ~GraphM();
     void buildGraph(ifstream&); // insert data from file
     bool insertEdge(int,int,int);
-    bool removeEdge();
+    bool removeEdge(int, int);
     void findShortestPath();
     void displayAll();
     
@@ -41,7 +41,7 @@ class GraphM
 
        TableType T[MAXNODES][MAXNODES];      // stores visited, distance, path
 
-    int minDist(int source);
+        int minDist(int source);
 };
 
 #endif /* graphm_h */
