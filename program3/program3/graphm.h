@@ -23,6 +23,7 @@ class GraphM
     bool removeEdge(int, int);
     void findShortestPath();
     void displayAll();
+    void display(int, int);
     
     private:
     
@@ -42,6 +43,7 @@ class GraphM
        TableType T[MAXNODES][MAXNODES];      // stores visited, distance, path
 
         int minDist(int source);
+    
 };
 
 #endif /* graphm_h */

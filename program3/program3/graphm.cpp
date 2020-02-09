@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "graphm.h"
+#include <vector>
 using namespace std;
 
 GraphM::GraphM()
@@ -35,7 +36,7 @@ void GraphM::buildGraph(ifstream& infile)
     
     infile >> size; //read number of nodes into size
     
-    for(int i = 0; i < size; i++)
+    for(int i = 1; i <= size; i++)
     {
         data[i].setData(infile);
     }
@@ -86,7 +87,7 @@ void GraphM::findShortestPath()
                         if(T[v][w].visited == false)
                         {
                             T[source][w].dist =min(T[source][w].dist,T[source][v].dist + C[v][w]);
-                            
+                            T[source][w].path = v;
                         }
                     }
                 }
@@ -115,4 +116,39 @@ int GraphM::minDist(int source)
         }
     }
     return v;
+}
+
+void GraphM::displayAll()
+{
+    for(int i = 1; i <= size; i++ )
+    {
+        std::cout << data[i] << endl;
+        for(int to = 1; to <= size; to++)
+        {
+            if (i != to) {
+                std::cout << "\t\t\t\t";
+                display(i, to);
+            }
+        }
+        std::cout << "---------------------------" << endl;
+        std::cout << endl;
+    }
+}
+
+void GraphM::display(int from, int to)
+{
+    int dist = 0;
+    int step = to;
+    vector<int> path;
+    while(T[from][step].path != from) {
+        path.push_back(step);
+        dist += T[from][step].dist;
+        step = T[from][step].path;
+    }
+    path.push_back(from);
+    dist+=T[from][step].dist;
+    
+    std::cout << "from:" << from << " to: " << to << " d: " << dist << " path ";
+    std::copy(path.begin(), path.end(), std::ostream_iterator<char>(std::cout, " "));
+    std:: cout << std::endl;
 }
