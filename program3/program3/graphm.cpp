@@ -33,8 +33,9 @@ void GraphM::buildGraph(ifstream& infile)
     int from;
     int to;
     int edge;
-    
+    string t;
     infile >> size; //read number of nodes into size
+    getline(infile, t);
     
     for(int i = 1; i <= size; i++)
     {
@@ -47,12 +48,15 @@ void GraphM::buildGraph(ifstream& infile)
         insertEdge(from, to, edge);
         infile >> from >> to >> edge;
     }
+    debugC();
 }
 
 bool GraphM::insertEdge(int from, int to, int edge)
 {
     if ( from >= 0 && from < MAXNODES && to >= 0 && to < MAXNODES && edge > 0) {
         C[from][to] = edge;
+        T[from][to].dist = edge;
+        T[from][to].path = from;
         return true;
     }
     return false;
@@ -62,6 +66,7 @@ bool GraphM::removeEdge(int from, int to)
 {
     if ( from >= 0 && from < MAXNODES && to >= 0 && to < MAXNODES) {
         C[from][to] = 0;
+        T[from][to].dist = 0;
         return true;
     }
     return false;
@@ -86,8 +91,10 @@ void GraphM::findShortestPath()
                     {
                         if(T[v][w].visited == false)
                         {
-                            T[source][w].dist =min(T[source][w].dist,T[source][v].dist + C[v][w]);
-                            T[source][w].path = v;
+                            if ((T[source][w].dist == 0) || (T[source][v].dist + C[v][w] < T[source][w].dist)) {
+                                T[source][w].dist = T[source][v].dist + C[v][w];
+                                T[source][w].path = v;
+                            }
                         }
                     }
                 }
@@ -105,11 +112,11 @@ int GraphM::minDist(int source)
             if (C[source][i] > 0 && !T[source][i].visited) {
                 if (v < 0) {
                     v = i;
-                    dist = T[source][i].dist;;
+                    dist = C[source][i];
                 } else {
-                    if (T[source][i].dist < dist) {
+                    if (C[source][i] < dist) {
                         v = i;
-                        dist = T[source][i].dist;
+                        dist = C[source][i];
                     }
                 }
             }
@@ -148,7 +155,22 @@ void GraphM::display(int from, int to)
     path.push_back(from);
     dist+=T[from][step].dist;
     
-    std::cout << "from:" << from << " to: " << to << " d: " << dist << " path ";
-    std::copy(path.begin(), path.end(), std::ostream_iterator<char>(std::cout, " "));
+    std::cout << "from:" << from << " to: " << to << " dist: " << dist << " path ";
+    std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
     std:: cout << std::endl;
+}
+
+void GraphM::debugC()
+{
+    for(int i = 1; i < MAXNODES; i++) {
+        for (int j = 1; j < MAXNODES; j++) {
+            std::cout << C[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void GraphM::debugT()
+{
+    
 }

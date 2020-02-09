@@ -31,6 +31,7 @@
 		8CF220A023F07CB90001DC1E /* graphm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graphm.cpp; sourceTree = "<group>"; };
 		8CF220A123F07CB90001DC1E /* nodedata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nodedata.cpp; sourceTree = "<group>"; };
 		8CF220A223F07CB90001DC1E /* nodedata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodedata.h; sourceTree = "<group>"; };
+		8CF220A623F092360001DC1E /* data31.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = data31.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 				8CF2209F23F07CB90001DC1E /* lab3.cpp */,
 				8CF220A123F07CB90001DC1E /* nodedata.cpp */,
 				8CF220A223F07CB90001DC1E /* nodedata.h */,
+				8CF220A623F092360001DC1E /* data31.txt */,
 			);
 			path = program3;
 			sourceTree = "<group>";

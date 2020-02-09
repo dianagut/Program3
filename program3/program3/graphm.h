@@ -10,7 +10,7 @@
 #define graphm_h
 #include "nodedata.h"
 
-const int MAXNODES = 100;
+const int MAXNODES = 6;
 
 class GraphM
 {
@@ -43,6 +43,8 @@ class GraphM
        TableType T[MAXNODES][MAXNODES];      // stores visited, distance, path
 
         int minDist(int source);
+    void debugC();
+    void debugT();
     
 };
 
