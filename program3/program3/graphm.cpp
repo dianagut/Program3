@@ -99,7 +99,7 @@ int GraphM::minDist(int source)
 {
     int v = -1;
     int dist = 0;
-    for (int i =0 ; i < MAXNODES; i++) {
+    for (int i = 1 ; i <= size; i++) {
         if (source != i) {
             if (C[source][i] > 0 && !T[source][i].visited) {
                 if (v < 0) {
