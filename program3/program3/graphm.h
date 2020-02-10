@@ -23,7 +23,7 @@ class GraphM
     bool removeEdge(int, int);
     void findShortestPath();
     void displayAll();
-    void display(int, int);
+    int display(int, int);
     
 private:
     

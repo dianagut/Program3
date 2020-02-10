@@ -48,6 +48,7 @@ bool NodeData::operator>=(const NodeData& rhs) const {
 
 bool NodeData::setData(istream& infile) {
 	getline(infile, data);
+    data.erase(remove(data.begin(), data.end(), '\r'), data.end());
 	return !infile.eof();       // eof function is true when eof char is read
 }
 

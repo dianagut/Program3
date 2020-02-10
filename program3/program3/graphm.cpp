@@ -128,6 +128,7 @@ int GraphM::minDist(int source)
 
 void GraphM::displayAll()
 {
+    int dist;
     for(int i = 1; i <= size; i++ )
     {
         std::cout << data[i] << endl;
@@ -135,7 +136,11 @@ void GraphM::displayAll()
         {
             if (i != to) {
                 std::cout << "\t\t\t\t";
-                display(i, to);
+                dist = display(i, to);
+                // used to display a human readable string for the endpoint
+                if (dist > 0) {
+                    std::cout << "\t\t\t\t\t(" << data[to] << ")" << endl;
+                }
             }
         }
         std::cout << "---------------------------" << endl;
@@ -143,7 +148,7 @@ void GraphM::displayAll()
     }
 }
 
-void GraphM::display(int from, int to)
+int GraphM::display(int from, int to)
 {
     int dist = 0;
     int step = to;
@@ -152,16 +157,17 @@ void GraphM::display(int from, int to)
     std::cout << "from:" << from << " to: " << to << " dist: " ;
     if (T[from][to].path == 0) {
         std::cout << "--" << std::endl;
-        return;
-    }
-    while(step != from) {
-        path.insert(path.begin(), step);
-        step = T[from][step].path;
-    }
-    path.insert(path.begin(), from);
-    dist = T[from][to].dist;
+    } else {
+        while(step != from) {
+            path.insert(path.begin(), step);
+            step = T[from][step].path;
+        }
+        path.insert(path.begin(), from);
+        dist = T[from][to].dist;
 
-    std::cout << dist << " path: ";
-    std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
-    std:: cout << std::endl;
+        std::cout << dist << " path: ";
+        std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
+        std:: cout << std::endl;
+    }
+    return dist;
 }
