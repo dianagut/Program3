@@ -39,7 +39,9 @@ void GraphM::buildGraph(ifstream& infile)
     
     for(int i = 1; i <= size; i++)
     {
-        data[i].setData(infile);
+        if (!data[i].setData(infile)) {
+            return; // hit eof, therefore break and finish
+        }
     }
     
     infile >> from >> to >> edge;
