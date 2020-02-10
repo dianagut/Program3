@@ -48,7 +48,6 @@ void GraphM::buildGraph(ifstream& infile)
         insertEdge(from, to, edge);
         infile >> from >> to >> edge;
     }
-    debugC();
 }
 
 bool GraphM::insertEdge(int from, int to, int edge)
@@ -147,30 +146,20 @@ void GraphM::display(int from, int to)
     int dist = 0;
     int step = to;
     vector<int> path;
-    while(T[from][step].path != from) {
-        path.push_back(step);
-        dist += T[from][step].dist;
+    
+    std::cout << "from:" << from << " to: " << to << " dist: " ;
+    if (T[from][to].path == 0) {
+        std::cout << "--" << std::endl;
+        return;
+    }
+    while(step != from) {
+        path.insert(path.begin(), step);
         step = T[from][step].path;
     }
-    path.push_back(from);
-    dist+=T[from][step].dist;
-    
-    std::cout << "from:" << from << " to: " << to << " dist: " << dist << " path ";
+    path.insert(path.begin(), from);
+    dist = T[from][to].dist;
+
+    std::cout << dist << " path: ";
     std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
     std:: cout << std::endl;
-}
-
-void GraphM::debugC()
-{
-    for(int i = 1; i < MAXNODES; i++) {
-        for (int j = 1; j < MAXNODES; j++) {
-            std::cout << C[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-}
-
-void GraphM::debugT()
-{
-    
 }

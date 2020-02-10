@@ -10,7 +10,7 @@
 #define graphm_h
 #include "nodedata.h"
 
-const int MAXNODES = 6;
+const int MAXNODES = 100;
 
 class GraphM
 {
@@ -25,27 +25,22 @@ class GraphM
     void displayAll();
     void display(int, int);
     
-    private:
+private:
     
     struct TableType
-       {
-              bool visited;          // whether node has been visited
-              int dist;              // shortest distance from source known so far
-              int path;              // previous node in path of min dist
-       };
+    {
+        bool visited;          // whether node has been visited
+        int dist;              // shortest distance from source known so far
+        int path;              // previous node in path of min dist
+        
+    };
 
-       NodeData data[MAXNODES];              // data for graph nodes
-
-       int C[MAXNODES][MAXNODES];            // Cost array, the adjacency matrix
-
-       int size;                             // number of nodes in the graph
-
-       TableType T[MAXNODES][MAXNODES];      // stores visited, distance, path
-
-        int minDist(int source);
-    void debugC();
-    void debugT();
-    
+    NodeData data[MAXNODES];              // data for graph nodes
+    int C[MAXNODES][MAXNODES];            // Cost array, the adjacency matrix
+    int size;                             // number of nodes in the graph
+    TableType T[MAXNODES][MAXNODES];      // stores visited, distance, path
+    int minDist(int source);
 };
 
 #endif /* graphm_h */
+
