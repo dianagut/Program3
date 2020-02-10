@@ -75,22 +75,27 @@ bool GraphM::removeEdge(int from, int to)
 
 void GraphM::findShortestPath()
 {
-    int v; 
     for(int source = 1; source <= size; source++)
     {
         T[source][source].dist = 0;
+        T[source][source].visited = true;
         
         for(int i = 1; i <= size; i++)
         {
-            v = minDist(source);
-            if (v >= 0) {
+            if (source == i) {
+                continue;
+            }
+            // find the first neighbor with shortest distance
+            int v = minDist(source);
+            if (v >= 0 && !T[source][v].visited) { // only if not visited yet
                 T[source][v].visited = true; //marked as visited
                 
+                // find all the nodes adjacent to v
                 for(int w = 1; w <= size; w++)
                 {
-                    if(C[v][w] != 0)
+                    if(C[v][w] != 0 && w != source) // only select the neighbors but skip the source
                     {
-                        if(T[v][w].visited == false)
+                        if(T[source][w].visited == false)
                         {
                             if ((T[source][w].dist == 0) || (T[source][v].dist + C[v][w] < T[source][w].dist)) {
                                 T[source][w].dist = T[source][v].dist + C[v][w];
@@ -108,17 +113,16 @@ int GraphM::minDist(int source)
 {
     int v = -1;
     int dist = 0;
-    for (int i = 1 ; i <= size; i++) {
-        if (source != i) {
-            if (C[source][i] > 0 && !T[source][i].visited) {
-                if (v < 0) {
+    for(int i = 1; i <= size; i++ )
+    {
+        if (T[source][i].dist > 0 && !T[source][i].visited) {
+            if (v == -1) {
+                v = i;
+                dist = T[source][i].dist;
+            } else {
+                if (T[source][i].dist < dist) {
+                    dist = T[source][i].dist;
                     v = i;
-                    dist = C[source][i];
-                } else {
-                    if (C[source][i] < dist) {
-                        v = i;
-                        dist = C[source][i];
-                    }
                 }
             }
         }
@@ -139,7 +143,7 @@ void GraphM::displayAll()
                 dist = display(i, to);
                 // used to display a human readable string for the endpoint
                 if (dist > 0) {
-                    std::cout << "\t\t\t\t\t(" << data[to] << ")" << endl;
+                    //std::cout << "\t\t\t\t\t(" << data[to] << ")" << endl;
                 }
             }
         }
@@ -154,7 +158,7 @@ int GraphM::display(int from, int to)
     int step = to;
     vector<int> path;
     
-    std::cout << "from:" << from << " to: " << to << " dist: " ;
+    std::cout << "from: " << from << " to: " << to << " distance: " ;
     if (T[from][to].path == 0) {
         std::cout << "--" << std::endl;
     } else {
@@ -165,7 +169,7 @@ int GraphM::display(int from, int to)
         path.insert(path.begin(), from);
         dist = T[from][to].dist;
 
-        std::cout << dist << " path: ";
+        std::cout << dist << "  path: ";
         std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
         std:: cout << std::endl;
     }
