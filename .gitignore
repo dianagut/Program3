@@ -1,3 +1,6 @@
 DerivedData
 .DS_Store
 UserInterfaceState.xcuserstate
+build/
+bin/
+program3/graph

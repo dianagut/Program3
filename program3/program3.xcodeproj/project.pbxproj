@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C52983123F1C81B00D3EF0E /* dataUWB.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C52983023F1C81B00D3EF0E /* dataUWB.txt */; };
 		8C52983323F1C9F800D3EF0E /* data31.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C52983223F1C9F800D3EF0E /* data31.txt */; };
+		8CF109F523F1D11900CB5961 /* test1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CF109F423F1D11900CB5961 /* test1.txt */; };
 		8CF220A323F07CBA0001DC1E /* lab3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CF2209F23F07CB90001DC1E /* lab3.cpp */; };
 		8CF220A423F07CBA0001DC1E /* graphm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CF220A023F07CB90001DC1E /* graphm.cpp */; };
 		8CF220A523F07CBA0001DC1E /* nodedata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CF220A123F07CB90001DC1E /* nodedata.cpp */; };
@@ -23,6 +24,7 @@
 			files = (
 				8C52983123F1C81B00D3EF0E /* dataUWB.txt in CopyFiles */,
 				8C52983323F1C9F800D3EF0E /* data31.txt in CopyFiles */,
+				8CF109F523F1D11900CB5961 /* test1.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,6 +33,7 @@
 /* Begin PBXFileReference section */
 		8C52983023F1C81B00D3EF0E /* dataUWB.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dataUWB.txt; sourceTree = "<group>"; };
 		8C52983223F1C9F800D3EF0E /* data31.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = data31.txt; sourceTree = "<group>"; };
+		8CF109F423F1D11900CB5961 /* test1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.txt; sourceTree = "<group>"; };
 		8CF2209423F07BBA0001DC1E /* program3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = program3; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF2209E23F07CB90001DC1E /* graphm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphm.h; sourceTree = "<group>"; };
 		8CF2209F23F07CB90001DC1E /* lab3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lab3.cpp; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		8CF2208B23F07BBA0001DC1E = {
 			isa = PBXGroup;
 			children = (
+				8CF109F423F1D11900CB5961 /* test1.txt */,
 				8C52983223F1C9F800D3EF0E /* data31.txt */,
 				8C52983023F1C81B00D3EF0E /* dataUWB.txt */,
 				8CF2209623F07BBA0001DC1E /* program3 */,
