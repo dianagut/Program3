@@ -10,8 +10,6 @@
 #define graphm_h
 #include "nodedata.h"
 
-const int MAXNODES = 100;
-
 class GraphM
 {
     public:

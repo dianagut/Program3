@@ -5,6 +5,11 @@
 #include <fstream>
 using namespace std;
 
+#ifndef MAXNODES
+#define MAXONDES
+const int MAXNODES = 100;
+#endif
+
 // simple class containing one string to use for testing
 // not necessary to comment further
 
